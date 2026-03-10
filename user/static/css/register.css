@@ -1,0 +1,344 @@
+/* register.css - стили для страницы регистрации */
+
+.register-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: linear-gradient(145deg, #ffffff, #f8faff);
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: slideUpFade 0.6s ease-out;
+}
+
+.register-title {
+    text-align: center;
+    color: #1e293b;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.register-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #1877f2, #00bcd4);
+    border-radius: 2px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.form-input {
+    padding: 14px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: white;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 4px rgba(24, 119, 242, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-input:hover {
+    border-color: #00bcd4;
+}
+
+.form-input::placeholder {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+    border-color: #f97316;
+}
+
+.form-input:valid:not(:placeholder-shown) {
+    border-color: #22c55e;
+}
+
+/* Индикатор сложности пароля */
+.password-strength {
+    height: 6px;
+    border-radius: 10px;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+    background: linear-gradient(to right, #e2e8f0, #e2e8f0);
+}
+
+.password-strength.weak {
+    background: linear-gradient(to right, #ef4444, #f87171);
+    width: 33%;
+}
+
+.password-strength.medium {
+    background: linear-gradient(to right, #f59e0b, #fbbf24);
+    width: 66%;
+}
+
+.password-strength.strong {
+    background: linear-gradient(to right, #22c55e, #86efac);
+    width: 100%;
+}
+
+/* Требования к паролю */
+.password-requirements {
+    list-style: none;
+    margin-top: 10px;
+    padding: 15px;
+    background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+    border-radius: 14px;
+    font-size: 0.9rem;
+}
+
+.requirement {
+    color: #64748b;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.requirement::before {
+    content: '○';
+    color: #94a3b8;
+    font-size: 1.2rem;
+}
+
+.requirement.valid {
+    color: #22c55e;
+}
+
+.requirement.valid::before {
+    content: '✓';
+    color: #22c55e;
+}
+
+/* Индикатор совпадения паролей */
+.password-match {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+
+.password-match.match {
+    color: #22c55e;
+}
+
+.password-match.nomatch {
+    color: #ef4444;
+}
+
+/* Кнопка регистрации */
+.btn-register {
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #1877f2, #00bcd4);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-register::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-register:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(24, 119, 242, 0.3);
+    background: linear-gradient(135deg, #166fe5, #0097a7);
+}
+
+.btn-register:hover::before {
+    left: 100%;
+}
+
+.btn-register:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Разделитель */
+.register-divider {
+    margin: 2rem 0 1.5rem;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+}
+
+/* Ссылка на вход */
+.login-link {
+    text-align: center;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.login-link-text {
+    color: #1877f2;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.login-link-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #1877f2, #00bcd4);
+    transition: width 0.3s ease;
+}
+
+.login-link-text:hover {
+    color: #166fe5;
+}
+
+.login-link-text:hover::after {
+    width: 100%;
+}
+
+/* Анимации */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .register-card {
+        margin: 0 15px;
+        padding: 2rem;
+    }
+
+    .register-title {
+        font-size: 1.8rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .btn-register {
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-card {
+        padding: 1.5rem;
+    }
+
+    .register-title {
+        font-size: 1.6rem;
+    }
+
+    .form-input {
+        padding: 12px 16px;
+    }
+
+    .password-requirements {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+    .register-card {
+        background: linear-gradient(145deg, #1e293b, #0f172a);
+    }
+
+    .register-title {
+        color: #f1f5f9;
+    }
+
+    .form-label {
+        color: #cbd5e1;
+    }
+
+    .form-input {
+        background-color: #334155;
+        border-color: #475569;
+        color: #f1f5f9;
+    }
+
+    .form-input:focus {
+        border-color: #00bcd4;
+    }
+
+    .password-requirements {
+        background: linear-gradient(145deg, #1e293b, #0f172a);
+    }
+
+    .requirement {
+        color: #94a3b8;
+    }
+
+    .login-link {
+        color: #94a3b8;
+    }
+}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block header %}Добро пожаловать!{% endblock %}
+
+{% block content %}
+<div class="welcome-card">
+    <h2 class="welcome-title">👋 Добро пожаловать на сайт</h2>
+
+    {% if user.is_authenticated %}
+        <p class="welcome-text">
+            Вы вошли как <strong>{{ user.username }}</strong>
+        </p>
+        <div class="button-group">
+            <a href="{% url 'profile' %}" class="btn btn-primary">👤 Мой профиль</a>
+            <a href="{% url 'logout' %}" class="btn btn-secondary">🚪 Выйти</a>
+        </div>
+    {% else %}
+        <p class="welcome-text">
+            Пожалуйста, войдите или зарегистрируйтесь
+        </p>
+        <div class="button-group">
+            <a href="{% url 'login' %}" class="btn btn-primary">🔐 Войти</a>
+            <a href="{% url 'register' %}" class="btn btn-secondary">📝 Регистрация</a>
+        </div>
+    {% endif %}
+
+    <hr class="divider">
+
+    <div class="footer-info">
+        <p>Проект на Django с системой аутентификации</p>
+        <p>© 2026 Все права защищены</p>
+    </div>
+</div>
+{% endblock %}

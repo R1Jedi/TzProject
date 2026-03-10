@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Мой профиль{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block header %}Мой профиль{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-grid">
+        <!-- Левая колонка - форма редактирования -->
+        <div class="profile-card edit-card">
+            <h2 class="card-title">
+                ✏️ Редактирование профиля
+            </h2>
+
+            <form method="post" action="{% url 'profile' %}" class="profile-form" id="profileForm">
+                {% csrf_token %}
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="last_name" class="form-label">Фамилия</label>
+                        <input type="text"
+                               name="last_name"
+                               id="last_name"
+                               value="{{ user.last_name }}"
+                               required
+                               placeholder="Введите фамилию"
+                               class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first_name" class="form-label">Имя</label>
+                        <input type="text"
+                               name="first_name"
+                               id="first_name"
+                               value="{{ user.first_name }}"
+                               required
+                               placeholder="Введите имя"
+                               class="form-input">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="patronymic" class="form-label">Отчество</label>
+                        <input type="text"
+                               name="patronymic"
+                               id="patronymic"
+                               value="{{ user.patronymic }}"
+                               placeholder="Введите отчество (необязательно)"
+                               class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="form-label">Имя пользователя</label>
+                        <input type="text"
+                               name="username"
+                               id="username"
+                               value="{{ user.username }}"
+                               required
+                               placeholder="Введите имя пользователя"
+                               class="form-input">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email"
+                               name="email"
+                               id="email"
+                               value="{{ user.email }}"
+                               placeholder="Email"
+                               class="form-input">
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button type="submit" class="btn btn-primary btn-save">
+                        💾 Сохранить изменения
+                    </button>
+                    <a href="{% url 'password_change' %}" class="btn btn-warning">
+                        🔑 Сменить пароль
+                    </a>
+                    <a href="{% url 'account_delete' %}" class="btn btn-danger">
+                        🗑️ Удалить аккаунт
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Правая колонка - информация о пользователе -->
+        <div class="profile-card info-card">
+            <h2 class="card-title">
+                📊 Информация об аккаунте
+            </h2>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <span class="info-label">Полное имя:</span>
+                    <span class="info-value">{{ user.get_full_name|default:"Не указано" }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value">{{ user.email }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Имя пользователя:</span>
+                    <span class="info-value">@{{ user.username }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Дата регистрации:</span>
+                    <span class="info-value">{{ user.date_joined|date:"d.m.Y" }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Последний вход:</span>
+                    <span class="info-value">{{ user.last_login|date:"d.m.Y H:i" }}</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Статус:</span>
+                    <span class="info-value">
+                        <span class="status-badge {% if user.is_active %}status-active{% else %}status-inactive{% endif %}">
+                            {% if user.is_active %}
+                                ✓ Активен
+                            {% else %}
+                                ✗ Деактивирован
+                            {% endif %}
+                        </span>
+                    </span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">ID пользователя:</span>
+                    <span class="info-value">#{{ user.id }}</span>
+                </div>
+            </div>
+
+            <hr class="info-divider">
+
+            <div class="hint-box">
+                <p class="hint-text">💡 <strong>Подсказка:</strong> Все изменения сохраняются после нажатия кнопки "Сохранить".</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}

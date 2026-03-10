@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block header %}Создание аккаунта{% endblock %}
+
+{% block content %}
+<div class="register-card">
+    <h2 class="register-title">📝 Регистрация</h2>
+
+    <form method="post" class="register-form" id="registerForm">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email"
+                   name="email"
+                   id="email"
+                   placeholder="example@mail.com"
+                   required
+                   class="form-input"
+                   autocomplete="email">
+        </div>
+
+        <div class="form-group">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text"
+                       name="username"
+                       id="username"
+                       placeholder="Введите ваш username"
+                       required
+                       class="form-input"
+                       autocomplete="username">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="last_name" class="form-label">Фамилия:</label>
+                <input type="text"
+                       name="last_name"
+                       id="last_name"
+                       placeholder="Иванов"
+                       required
+                       class="form-input"
+                       autocomplete="family-name">
+            </div>
+
+            <div class="form-group">
+                <label for="first_name" class="form-label">Имя:</label>
+                <input type="text"
+                       name="first_name"
+                       id="first_name"
+                       placeholder="Иван"
+                       required
+                       class="form-input"
+                       autocomplete="given-name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="patronymic" class="form-label">Отчество:</label>
+            <input type="text"
+                   name="patronymic"
+                   id="patronymic"
+                   placeholder="Иванович (необязательно)"
+                   class="form-input"
+                   autocomplete="additional-name">
+        </div>
+
+        <div class="form-group">
+            <label for="password1" class="form-label">Пароль:</label>
+            <input type="password"
+                   name="password1"
+                   id="password1"
+                   placeholder="Минимум 8 символов"
+                   required
+                   class="form-input"
+                   autocomplete="new-password">
+            <div class="password-strength" id="passwordStrength"></div>
+            <ul class="password-requirements" id="passwordRequirements">
+                <li class="requirement" id="lengthReq">✓ Минимум 8 символов</li>
+                <li class="requirement" id="uppercaseReq">✓ Заглавная буква</li>
+                <li class="requirement" id="lowercaseReq">✓ Строчная буква</li>
+                <li class="requirement" id="numberReq">✓ Цифра</li>
+                <li class="requirement" id="specialReq">✓ Специальный символ</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="password2" class="form-label">Подтверждение пароля:</label>
+            <input type="password"
+                   name="password2"
+                   id="password2"
+                   placeholder="Повторите пароль"
+                   required
+                   class="form-input"
+                   autocomplete="new-password">
+            <div class="password-match" id="passwordMatch"></div>
+        </div>
+
+        <button type="submit" class="btn-register" id="submitBtn">📝 Зарегистрироваться</button>
+    </form>
+
+    <hr class="register-divider">
+
+    <p class="login-link">
+        Уже есть аккаунт? <a href="{% url 'login' %}" class="login-link-text">Войти</a>
+    </p>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock %}

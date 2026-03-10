@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ТЗ Сайт{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="header">
+        <h1>{% block header %}ТЗ Сайт{% endblock %}</h1>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}">👤 Профиль</a>
+                <a href="{% url 'password_change' %}">🔑 Сменить пароль</a>
+                <a href="{% url 'logout' %}" style="color: #dc3545;">🚪 Выйти ({{ user.email }})</a>
+            {% else %}
+                <a href="{% url 'login' %}">🔐 Вход</a>
+                <a href="{% url 'register' %}">📝 Регистрация</a>
+            {% endif %}
+        </div>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+        <div class="footer">
+            © 2026 ТЗ Сайт. Все права защищены.
+        </div>
+    </div>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

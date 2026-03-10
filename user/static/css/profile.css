@@ -1,0 +1,351 @@
+/* profile.css - стили для страницы профиля */
+
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 30px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.profile-card {
+    background: linear-gradient(145deg, #ffffff, #f8faff);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 1.6rem;
+    color: #1e293b;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, #1877f2, #00bcd4) 1;
+    border-bottom-style: solid;
+}
+
+/* Стили для формы */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+.form-input {
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 4px rgba(24, 119, 242, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-input:hover {
+    border-color: #00bcd4;
+}
+
+.form-input.readonly-input {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #475569;
+    cursor: not-allowed;
+}
+
+.input-hint {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+/* Кнопки действий */
+.profile-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1 1 auto;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1877f2, #00bcd4);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.3);
+    background: linear-gradient(135deg, #166fe5, #0097a7);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: white;
+}
+
+.btn-warning:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+    background: linear-gradient(135deg, #b91c1c, #dc2626);
+}
+
+/* Информационная карточка */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.info-value {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-active {
+    background: linear-gradient(135deg, #22c55e, #86efac);
+    color: #14532d;
+}
+
+.status-inactive {
+    background: linear-gradient(135deg, #ef4444, #fca5a5);
+    color: #7f1d1d;
+}
+
+.info-divider {
+    margin: 25px 0 20px;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+}
+
+.hint-box {
+    background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+    padding: 20px;
+    border-radius: 16px;
+    border-left: 5px solid #1877f2;
+}
+
+.hint-text {
+    color: #334155;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.hint-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .profile-card {
+        padding: 25px;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-container {
+        padding: 10px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .info-label {
+        font-size: 0.9rem;
+    }
+
+    .info-value {
+        font-size: 0.95rem;
+    }
+
+    .status-badge {
+        align-self: flex-start;
+    }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+    .profile-card {
+        background: linear-gradient(145deg, #1e293b, #0f172a);
+    }
+
+    .card-title {
+        color: #f1f5f9;
+    }
+
+    .form-label {
+        color: #cbd5e1;
+    }
+
+    .form-input {
+        background-color: #334155;
+        border-color: #475569;
+        color: #f1f5f9;
+    }
+
+    .form-input:focus {
+        border-color: #00bcd4;
+    }
+
+    .form-input.readonly-input {
+        background-color: #1e293b;
+        color: #94a3b8;
+    }
+
+    .info-label {
+        color: #94a3b8;
+    }
+
+    .info-value {
+        color: #f1f5f9;
+    }
+
+    .hint-box {
+        background: linear-gradient(145deg, #1e293b, #0f172a);
+        border-left-color: #00bcd4;
+    }
+
+    .hint-text {
+        color: #cbd5e1;
+    }
+
+    .info-divider {
+        background: linear-gradient(to right, transparent, #334155, transparent);
+    }
+}

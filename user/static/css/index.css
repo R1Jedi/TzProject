@@ -1,0 +1,139 @@
+/* index.css - стили для главной страницы */
+
+.welcome-card {
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.welcome-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.welcome-text {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.welcome-text strong {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.button-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 1.1em;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.divider {
+    margin: 40px auto;
+    width: 50%;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
+.footer-info {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.8;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 2em;
+    }
+
+    .welcome-text {
+        font-size: 1.1em;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 1em;
+    }
+
+    .button-group {
+        gap: 15px;
+    }
+
+    .divider {
+        width: 80%;
+    }
+}
+
+/* Темная тема (опционально) */
+@media (prefers-color-scheme: dark) {
+    .welcome-title {
+        color: #e1e1e1;
+    }
+
+    .welcome-text {
+        color: #aaa;
+    }
+
+    .footer-info {
+        color: #888;
+    }
+}
