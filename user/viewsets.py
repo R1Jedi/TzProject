@@ -1,4 +1,3 @@
-# user/viewsets.py
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -11,7 +10,6 @@ from django.contrib.auth.models import Group
 from .models import CustomUser
 from .serializers import (
     UserSerializer, UserCreateSerializer, UserUpdateSerializer,
-    SetAdminSerializer, RemoveAdminSerializer
 )
 from .permissions import IsAdminUser, IsOwnerOrAdmin
 
