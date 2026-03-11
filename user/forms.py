@@ -7,12 +7,12 @@ class CustomUserCreationForm(forms.ModelForm):
     """Форма регистрации нового пользователя"""
     password1 = forms.CharField(
         label='Password',
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        widget=forms.PasswordInput(),
         min_length=8
     )
     password2 = forms.CharField(
         label='Confirm password',
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        widget=forms.PasswordInput(),
         min_length=8
     )
 
@@ -20,10 +20,10 @@ class CustomUserCreationForm(forms.ModelForm):
         model = CustomUser
         fields = ('email', 'last_name', 'first_name', 'patronymic')
         widgets = {
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'patronymic': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(),
+            'last_name': forms.TextInput(),
+            'first_name': forms.TextInput(),
+            'patronymic': forms.TextInput(),
         }
 
     def clean_password2(self):
@@ -51,8 +51,8 @@ class CustomUserChangeForm(forms.ModelForm):
         model = CustomUser
         fields = ('email', 'last_name', 'first_name', 'patronymic')
         widgets = {
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'patronymic': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(),
+            'last_name': forms.TextInput(),
+            'first_name': forms.TextInput(),
+            'patronymic': forms.TextInput(),
         }

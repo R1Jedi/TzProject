@@ -3,6 +3,8 @@ from django.contrib.auth import login, logout, authenticate, update_session_auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from .models import CustomUser
+
 
 def index(request):
     """Главная страница"""
@@ -108,7 +110,6 @@ def profile_view(request):
             errors.append('Email не может быть пустым')
 
         if new_username and new_username != user.username:
-            from .models import CustomUser
             if CustomUser.objects.filter(username=new_username).exclude(pk=user.pk).exists():
                 errors.append(f'Пользователь с username "{new_username}" уже существует')
 
